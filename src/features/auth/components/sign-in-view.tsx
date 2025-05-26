@@ -24,7 +24,7 @@ export default function SignInViewPage({ stars }: { stars: number }) {
         Login
       </Link>
       <div className='bg-muted relative hidden h-full flex-col p-10 text-white lg:flex dark:border-r'>
-        <div className='absolute inset-0 bg-zinc-900' />
+        <div className='absolute inset-0 bg-black' />
         <div className='relative z-20 flex items-center text-sm font-medium'>
           <svg
             width='100'
@@ -65,12 +65,10 @@ export default function SignInViewPage({ stars }: { stars: number }) {
         </div>
         <div className='relative z-20 mt-auto'>
           <blockquote className='space-y-2'>
-            <p className='text-lg'>
-              &ldquo;This starter template has saved me countless hours of work
-              and helped me deliver projects to my clients faster than ever
-              before.&rdquo;
+            <p className='text-xl'>
+              Less Talk. More Magic. Unlock 10x efficiency with AI-powered
+              automation.
             </p>
-            <footer className='text-sm'>Random Dude</footer>
           </blockquote>
         </div>
       </div>

@@ -122,6 +122,25 @@
   }
 }
 
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .progress-glow {
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.3);
+  }
+
+  .glassmorphism {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
 /* View Transition Wave Effect */
 ::view-transition-old(root),
 ::view-transition-new(root) {

@@ -5,15 +5,6 @@ import {
   CollapsibleTrigger
 } from '@/components/ui/collapsible';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
-import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -28,47 +19,21 @@ import {
   SidebarMenuSubItem,
   SidebarRail
 } from '@/components/ui/sidebar';
-import { UserAvatarProfile } from '@/components/user-avatar-profile';
 import { navItems } from '@/constants/data';
 import { useMediaQuery } from '@/hooks/use-media-query';
-import { useUser } from '@clerk/nextjs';
-import {
-  IconBell,
-  IconChevronRight,
-  IconChevronsDown,
-  IconCreditCard,
-  IconLogout,
-  IconPhotoUp,
-  IconUserCircle
-} from '@tabler/icons-react';
-import { SignOutButton } from '@clerk/nextjs';
+import { IconChevronRight } from '@tabler/icons-react';
+import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import { Icons } from '../icons';
-import { OrgSwitcher } from '../org-switcher';
-export const company = {
-  name: 'Acme Inc',
-  logo: IconPhotoUp,
-  plan: 'Enterprise'
-};
-
-const tenants = [
-  { id: '1', name: 'Acme Inc' },
-  { id: '2', name: 'Beta Corp' },
-  { id: '3', name: 'Gamma Ltd' }
-];
+import { OrganizationSwitcher } from '@clerk/nextjs';
+import { useSidebar } from '@/components/ui/sidebar';
 
 export default function AppSidebar() {
   const pathname = usePathname();
   const { isOpen } = useMediaQuery();
-  const { user } = useUser();
-  const router = useRouter();
-  const handleSwitchTenant = (_tenantId: string) => {
-    // Tenant switching functionality would be implemented here
-  };
-
-  const activeTenant = tenants[0];
+  const { state } = useSidebar();
 
   React.useEffect(() => {
     // Side effects based on sidebar state changes
@@ -77,15 +42,40 @@ export default function AppSidebar() {
   return (
     <Sidebar collapsible='icon'>
       <SidebarHeader>
-        <OrgSwitcher
-          tenants={tenants}
-          defaultTenant={activeTenant}
-          onTenantSwitch={handleSwitchTenant}
-        />
+        <div className={state === 'collapsed' ? 'p-1' : 'p-2'}>
+          <OrganizationSwitcher
+            appearance={{
+              elements: {
+                organizationSwitcherTrigger:
+                  state === 'collapsed'
+                    ? 'p-2 w-8 h-8 justify-center hover:bg-sidebar-accent rounded-md [&>*:last-child]:hidden'
+                    : 'p-2 w-full justify-start hover:bg-sidebar-accent rounded-md gap-2',
+                organizationPreviewMainIdentifier:
+                  state === 'collapsed' ? 'sr-only' : 'font-semibold text-sm',
+                organizationPreviewSecondaryIdentifier:
+                  state === 'collapsed'
+                    ? 'sr-only'
+                    : 'text-xs text-muted-foreground',
+                organizationSwitcherPopoverCard: 'shadow-lg border z-50',
+                organizationSwitcherPopoverActionButton:
+                  'hover:bg-sidebar-accent',
+                organizationPreviewAvatarBox:
+                  state === 'collapsed' ? 'h-4 w-4' : 'h-4 w-4',
+                organizationSwitcherTriggerIcon:
+                  state === 'collapsed' ? 'hidden' : ''
+              }
+            }}
+            createOrganizationMode='modal'
+            organizationProfileMode='modal'
+            hidePersonal={false}
+          />
+        </div>
       </SidebarHeader>
       <SidebarContent className='overflow-x-hidden'>
         <SidebarGroup>
-          <SidebarGroupLabel>Overview</SidebarGroupLabel>
+          <SidebarGroupLabel className={state === 'collapsed' ? 'sr-only' : ''}>
+            Overview
+          </SidebarGroupLabel>
           <SidebarMenu>
             {navItems.map((item) => {
               const Icon = item.icon ? Icons[item.icon] : Icons.logo;
@@ -146,64 +136,22 @@ export default function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuButton
-                  size='lg'
-                  className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'
-                >
-                  {user && (
-                    <UserAvatarProfile
-                      className='h-8 w-8 rounded-lg'
-                      showInfo
-                      user={user}
-                    />
-                  )}
-                  <IconChevronsDown className='ml-auto size-4' />
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                className='w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg'
-                side='bottom'
-                align='end'
-                sideOffset={4}
-              >
-                <DropdownMenuLabel className='p-0 font-normal'>
-                  <div className='px-1 py-1.5'>
-                    {user && (
-                      <UserAvatarProfile
-                        className='h-8 w-8 rounded-lg'
-                        showInfo
-                        user={user}
-                      />
-                    )}
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-
-                <DropdownMenuGroup>
-                  <DropdownMenuItem
-                    onClick={() => router.push('/dashboard/profile')}
-                  >
-                    <IconUserCircle className='mr-2 h-4 w-4' />
-                    Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconCreditCard className='mr-2 h-4 w-4' />
-                    Billing
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <IconBell className='mr-2 h-4 w-4' />
-                    Notifications
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <IconLogout className='mr-2 h-4 w-4' />
-                  <SignOutButton redirectUrl='/auth/sign-in' />
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div
+              className={`flex items-center p-2 ${state === 'collapsed' ? 'justify-center' : 'justify-start'}`}
+            >
+              <UserButton
+                appearance={{
+                  elements: {
+                    avatarBox: 'h-8 w-8',
+                    userButtonPopoverCard: 'shadow-lg border',
+                    userButtonPopoverActionButton: 'hover:bg-accent',
+                    userButtonBox:
+                      state === 'collapsed' ? 'flex-row-reverse' : 'flex-row'
+                  }
+                }}
+                showName={state !== 'collapsed'}
+              />
+            </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>

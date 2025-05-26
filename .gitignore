@@ -46,3 +46,46 @@ next-env.d.ts
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Security sensitive files
+*.key
+*.pem
+*.p12
+*.pfx
+.secrets/
+secrets.*
+.vscode/settings.json
+.aws/
+.gcp/
+
+# Logs that might contain sensitive data
+*.log
+logs/
+*.log.*
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+*.tmp
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+
+# API keys and tokens (extra protection)
+.env.production
+.env.staging
+.env.development
+.env.test
+
+# Test files that might contain credentials
+test-api.js
+*-test.js
+test-*.js

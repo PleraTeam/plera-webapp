@@ -16,8 +16,62 @@ const META_THEME_COLORS = {
 };
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
+  title: {
+    default: 'Plera - Scale Your Business Faster',
+    template: '%s | Plera'
+  },
+  description:
+    'Remove bottlenecks and unlock growth for your business. Plera helps you scale faster with automated systems and streamlined processes.',
+  keywords: [
+    'business growth',
+    'automation',
+    'scale business',
+    'productivity',
+    'business optimization'
+  ],
+  authors: [{ name: 'Plera' }],
+  creator: 'Plera',
+  publisher: 'Plera',
+  metadataBase: new URL('https://plera.co'),
+  alternates: {
+    canonical: '/'
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://plera.co',
+    title: 'Plera - Scale Your Business Faster',
+    description:
+      'Remove bottlenecks and unlock growth for your business. Plera helps you scale faster with automated systems and streamlined processes.',
+    siteName: 'Plera',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Plera - Scale Your Business Faster'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Plera - Scale Your Business Faster',
+    description:
+      'Remove bottlenecks and unlock growth for your business. Plera helps you scale faster with automated systems and streamlined processes.',
+    images: ['/og-image.png'],
+    creator: '@plera'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+    }
+  }
 };
 
 export const viewport: Viewport = {
