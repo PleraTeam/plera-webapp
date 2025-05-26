@@ -79,10 +79,10 @@ async function fetchFromAirtable<T>(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { clientId: string } }
+  { params }: { params: Promise<{ clientId: string }> }
 ) {
   try {
-    const { clientId } = params;
+    const { clientId } = await params;
 
     if (!clientId) {
       return NextResponse.json(
@@ -138,7 +138,7 @@ export async function GET(
 
     return NextResponse.json(responseData, { status: 200 });
   } catch (error) {
-    console.error('Dashboard API Error:', error);
+    // Dashboard API Error
 
     // Handle different types of errors
     let errorMessage = 'An unexpected error occurred';
