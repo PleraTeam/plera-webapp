@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
-import { CalendarDays, Mail, MessageCircle } from 'lucide-react';
+import { CalendarDays, Mail } from 'lucide-react';
 import PageContainer from '@/components/layout/page-container';
 
 export default function SupportPage() {

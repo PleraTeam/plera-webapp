@@ -30,6 +30,9 @@ export function CompanyInfoStep({ form }: CompanyInfoStepProps) {
   return (
     <div className='space-y-8'>
       <div className='mb-10 text-center'>
+        <h1 className='text-foreground mb-4 text-2xl font-semibold'>
+          About Your Business
+        </h1>
         <p className='text-muted-foreground mx-auto max-w-lg text-base leading-relaxed'>
           Let&apos;s start with the basics about your business.
         </p>

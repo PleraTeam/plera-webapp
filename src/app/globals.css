@@ -42,36 +42,36 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.269 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --background: #212121;
+  --foreground: #ffffff;
+  --card: #2a2a2a;
+  --card-foreground: #ffffff;
+  --popover: #2a2a2a;
+  --popover-foreground: #ffffff;
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #a0a0a0;
+  --accent: #333333;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: #404040;
+  --input: #404040;
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #ffffff;
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #404040;
   --sidebar-ring: oklch(0.439 0 0);
 }
 
@@ -119,6 +119,40 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Global typography overrides for sleeker, smaller headings */
+  h1 {
+    @apply text-lg leading-tight font-medium;
+  }
+  h2 {
+    @apply text-base leading-tight font-medium;
+  }
+  h3 {
+    @apply text-sm leading-tight font-medium;
+  }
+  h4 {
+    @apply text-sm leading-tight font-normal;
+  }
+  h5 {
+    @apply text-xs leading-tight font-medium;
+  }
+  h6 {
+    @apply text-xs leading-tight font-normal;
+  }
+
+  /* Override default text sizes to be more compact */
+  .text-4xl {
+    @apply text-2xl;
+  }
+  .text-3xl {
+    @apply text-xl;
+  }
+  .text-2xl {
+    @apply text-lg;
+  }
+  .text-xl {
+    @apply text-base;
   }
 }
 

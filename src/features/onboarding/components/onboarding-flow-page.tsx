@@ -37,6 +37,7 @@ export function OnboardingFlowPage() {
     resolver: zodResolver(onboardingSchema),
     defaultValues: {
       companyName: '',
+      companySize: undefined,
       industry: '',
       otherIndustry: '',
       businessBottlenecks: [],
@@ -45,6 +46,7 @@ export function OnboardingFlowPage() {
       otherGoal: '',
       clientAcquisitionMethods: [],
       otherAcquisitionMethod: '',
+      communicationPreference: undefined,
       email: '',
       phone: '',
       newsletterOptIn: false

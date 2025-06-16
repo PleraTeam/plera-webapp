@@ -14,36 +14,88 @@ export type Product = {
 //Info: The following data is used for the sidebar navigation and Cmd K bar.
 export const navItems: NavItem[] = [
   {
-    title: 'Dashboard',
+    title: 'Workspaces',
     url: '/dashboard/overview',
+    icon: 'page',
+    isActive: false,
+    shortcut: ['w', 'w'],
+    items: []
+  },
+  {
+    title: 'Private API Network',
+    url: '/dashboard/api-network',
     icon: 'dashboard',
+    shortcut: ['p', 'n'],
     isActive: false,
-    shortcut: ['d', 'd'],
-    items: [] // Empty array as there are no child items for Dashboard
+    items: []
   },
   {
-    title: 'Product',
-    url: '/dashboard/product',
-    icon: 'product',
-    shortcut: ['p', 'p'],
+    title: 'Reports',
+    url: '/dashboard/reports',
+    icon: 'post',
+    shortcut: ['r', 'r'],
     isActive: false,
-    items: [] // No child items
+    items: []
   },
   {
-    title: 'Kanban',
-    url: '/dashboard/kanban',
-    icon: 'kanban',
-    shortcut: ['k', 'k'],
+    title: 'Insights',
+    url: '/dashboard/insights',
+    icon: 'media',
+    shortcut: ['i', 'i'],
     isActive: false,
-    items: [] // No child items
+    items: []
+  }
+];
+
+// Additional navigation items for the bottom section
+export const bottomNavItems: NavItem[] = [
+  {
+    title: 'What is Plera',
+    url: '/docs/what-is-plera',
+    icon: 'help',
+    isActive: false,
+    shortcut: ['h', 'p'],
+    items: []
   },
   {
-    title: 'Plans',
-    url: '/dashboard/plans',
+    title: 'How to Publish',
+    url: '/docs/how-to-publish',
+    icon: 'post',
+    isActive: false,
+    shortcut: ['h', 'p'],
+    items: []
+  },
+  {
+    title: 'Learning Center',
+    url: '/docs/learning-center',
+    icon: 'pizza',
+    isActive: false,
+    shortcut: ['l', 'c'],
+    items: []
+  },
+  {
+    title: 'Support Center',
+    url: '/dashboard/support',
+    icon: 'user',
+    isActive: false,
+    shortcut: ['s', 'c'],
+    items: []
+  },
+  {
+    title: 'Plera Enterprise',
+    url: '/enterprise',
     icon: 'billing',
-    shortcut: ['b', 'b'],
     isActive: false,
-    items: [] // No child items
+    shortcut: ['p', 'e'],
+    items: []
+  },
+  {
+    title: 'Download Desktop App',
+    url: '/download',
+    icon: 'laptop',
+    isActive: false,
+    shortcut: ['d', 'a'],
+    items: []
   }
 ];
 
